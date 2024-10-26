@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export const metadata = {
   title: "Download Forms - WfskaIndia",
@@ -13,30 +13,30 @@ export default function Page() {
           Download Forms
         </h2>
         <div className="flex flex-wrap gap-4 justify-between">
-          <Image
-            src="/images/forms/student-membership.jpeg"
-            alt="gallery"
-            width={350}
-            height={220}
-          />
-          <Image
-            src="/images/forms/examination.jpeg"
-            alt="gallery"
-            width={350}
-            height={220}
-          />
-          <Image
-            src="/images/forms/examiner-authorization.jpeg"
-            alt="gallery"
-            width={350}
-            height={220}
-          />
-          <Image
-            src="/images/forms/associate-membership.jpeg"
-            alt="gallery"
-            width={350}
-            height={220}
-          />
+          <Link
+            className="bg-blue-500 rounded-md p-4 text-white font-bold hover:bg-blue-400"
+            href="/forms/student-membership"
+          >
+            Student Membership Form
+          </Link>
+          <Link
+            className="bg-blue-500 rounded-md p-4 text-white font-bold hover:bg-blue-400"
+            href="/forms/examination"
+          >
+            Examination Form
+          </Link>
+          <Link
+            className="bg-blue-500 rounded-md p-4 text-white font-bold hover:bg-blue-400"
+            href="/forms/examiner-authorization"
+          >
+            Examiner Authorization Form
+          </Link>
+          <Link
+            className="bg-blue-500 rounded-md p-4 text-white font-bold hover:bg-blue-400"
+            href="/forms/associate-membership"
+          >
+            Associate Membership Form
+          </Link>
         </div>
       </section>
     </>

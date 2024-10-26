@@ -1,17 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaWhatsapp
-} from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 export default function Header() {
   return (
     <>
       <header>
-        <div className="flex flex-col justify-center items-center text-center px-40 py-4 bg-[#0a2540]">
-          <div className="flex items-center w-full justify-between">
+        <div className="flex flex-col justify-center items-center text-center py-4 bg-[#295a8a] space-y-2">
+          <div className="flex items-center w-full justify-between px-40">
             <div className="space-x-1">
               <span className="bg-white px-1 h-10 border">0</span>
               <span className="bg-white px-1 h-10 border">0</span>
@@ -41,10 +37,10 @@ export default function Header() {
           </div>
           <div className="flex justify-center items-center gap-8 flex-wrap">
             <Image
-              src="/images/fskaw.jpeg"
-              className="rounded-full"
-              width={70}
-              height={70}
+              src="/images/fskaw.png"
+              className="rounded-md"
+              width={90}
+              height={90}
               alt="Logo"
             />
             <Image
@@ -78,19 +74,20 @@ export default function Header() {
               alt="Logo"
             />
             <Image
-              src="/images/tkag.jpg"
+              src="/images/sakf.jpeg"
               className="rounded-full"
               width={70}
               height={70}
               alt="Logo"
             />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 px-40">
             <h1 className="text-4xl text-white bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-600 bg-clip-text text-transparent font-black capitalize">
               World Funakoshi Shotokan Karate Association India
             </h1>
             <p className="text-white text-lg px-14 capitalize">
-            WFSKA-INDIA. Affiliated to Funakoshi Shotokan Karate Association World (Japan) and Approved by Karate India Organisation (KIO).
+              WFSKA-INDIA. Affiliated to Funakoshi Shotokan Karate Association
+              World (Japan) and Approved by Karate India Organisation (KIO).
             </p>
           </div>
         </div>
@@ -104,7 +101,7 @@ export default function Header() {
                 <Link href="/about-us">About Us</Link>
               </li>
               <li>
-                <Link href="#">Adminstration</Link>
+                <Link href="/adminstration">Adminstration</Link>
               </li>
               <li>
                 <Link href="/grading-syllabus.pdf">Grading Syllabus</Link>

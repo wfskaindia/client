@@ -5,8 +5,7 @@ import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 export default function Footer() {
   return (
     <>
-      {" "}
-      <footer className="flex flex-col gap-10 bg-[#0a2540]">
+      <footer className="flex flex-col gap-10 bg-[#295a8a]">
         <div className="flex justify-between px-40 py-12">
           <div className="text-white space-y-4">
             <h2 className="text-2xl font-extrabold">Important Links</h2>
@@ -27,14 +26,10 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="https://www.wkf.net/">
-                  World Karate Federation
-                </Link>
+                <Link href="https://www.wkf.net/">World Karate Federation</Link>
               </li>
               <li>
-                <Link href="https://oca.asia/">
-                  Olympic Council of Asia
-                </Link>
+                <Link href="https://oca.asia/">Olympic Council of Asia</Link>
               </li>
               <li>
                 <Link href="https://olympics.com/ioc/overview">
@@ -47,79 +42,48 @@ export default function Footer() {
             <h2 className="text-2xl font-extrabold">Sitemap</h2>
             <ul className="space-y-3 font-medium px-6 underline list-disc">
               <li>
-                <Link href="/">
-                  Home
-                </Link>
+                <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/about-us">
-                  About Us
-                </Link>
+                <Link href="/about-us">About Us</Link>
               </li>
               <li>
-                <Link href="#">
-                  Administration
-                </Link>
+                <Link href="#">Administration</Link>
               </li>
               <li>
-                <Link href="/membership">
-                  Membership
-                </Link>
+                <Link href="/membership">Membership</Link>
               </li>
               <li>
-                <Link href="/download-forms">
-                  Download Forms
-                </Link>
+                <Link href="/download-forms">Download Forms</Link>
               </li>
               <li>
-                <Link href="/gallery">
-                  Gallery
-                </Link>
+                <Link href="/gallery">Gallery</Link>
               </li>
               <li>
-                <Link href="/contact-us">
-                  Contact Us
-                </Link>
+                <Link href="/contact-us">Contact Us</Link>
               </li>
             </ul>
           </div>
- 
+
           <div className="text-white space-y-4">
             <h2 className="text-2xl font-extrabold">Download Forms</h2>
             <ul className="space-y-3 font-medium px-6 underline list-disc">
               <li>
-                <Link href="/download-forms">
-                  Application Form for Membership
+                <Link href="/forms/student-membership">
+                  Student Membership Form
                 </Link>
               </li>
               <li>
-                <Link href="/download-forms">
-                  Application for Affiliation
+                <Link href="/forms/examination">Examination Form</Link>
+              </li>
+              <li>
+                <Link href="/forms/examiner-authorization">
+                  Examiner Authorization Form
                 </Link>
               </li>
               <li>
-                <Link href="/download-forms">
-                  Kyu Examination form
-                </Link>
-              </li>
-              <li>
-                <Link href="/download-forms">
-                  Dan Examination form
-                </Link>
-              </li>
-              <li>
-                <Link href="/download-forms">
-                  GRADING EXAMINATION REPORT
-                </Link>
-              </li>
-              <li>
-                <Link href="/download-forms">
-                  Renewal Application Form
-                </Link>
-              </li>
-              <li>
-                <Link href="/download-forms">
-                  Belt Grading Registration Form
+                <Link href="/forms/associate-membership">
+                  Associate Membership Form
                 </Link>
               </li>
             </ul>

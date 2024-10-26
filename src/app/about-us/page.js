@@ -1,9 +1,9 @@
+import Image from "next/image";
 
 export const metadata = {
-    title: "About Us - WfskaIndia",
-  };
+  title: "About Us - WfskaIndia",
+};
 
-  
 export default function Page() {
   return (
     <>
@@ -11,6 +11,15 @@ export default function Page() {
         <h2 className="bg-gray-200 p-4 rounded-md text-2xl text-center">
           About Us
         </h2>
+        <div className="flex justify-center items-center">
+          <Image
+            alt="Founder"
+            className="rounded-md"
+            src="/images/founder.jpeg"
+            width={300}
+            height={200}
+          />
+        </div>
         <p>
           WFSKA-INDIA is a Shotokan style founded by Master Gichin Funakoshi,
           the most widely known style of Karate all over the world and he is

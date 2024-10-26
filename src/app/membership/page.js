@@ -22,7 +22,7 @@ export default function Page() {
           <InstructorCard
             src="/monushka.jpeg"
             name="Sensei Monushka Agima Pereira"
-            address="Dojo location -Curca and Santacruz"
+            address="Casa Do povo hall, Goa velha Market"
             designation="Chief Instructor"
           />
           <InstructorCard
@@ -43,6 +43,12 @@ export default function Page() {
             address="Dojo- Casa -do-povo hall, Goa Velha"
             designation="Instructor"
           />
+          <InstructorCard
+            src="/vignesh.jpg"
+            name="Vignesh Mukund Haldankar"
+            address="Bldg. No. 244,Room No. 1/3,MPT COLONY, Headland Sada, Vasco, Goa"
+            designation="2nd DAN WFSKA JAPAN"
+          />
         </div>
       </section>
     </>
@@ -52,7 +58,7 @@ export default function Page() {
 const InstructorCard = ({ src, name, address, designation }) => {
   return (
     <>
-      <div className="space-y-1 text-center">
+      <div className="w-[300px] space-y-1 text-center">
         <div className="w-[300px]">
           <Image
             src={`/images/instructors${src}`}
@@ -62,9 +68,9 @@ const InstructorCard = ({ src, name, address, designation }) => {
             className="rounded-md w-full h-full"
           />
         </div>
-        <h2 className="text-lg font-extrabold">{name}</h2>
-        <p>{designation}</p>
-        <p>{address}</p>
+        <h2 className="text-lg font-black">{name}</h2>
+        <p className="font-semibold">{designation}</p>
+        <p className="break-words">{address}</p>
       </div>
     </>
   );
