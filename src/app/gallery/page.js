@@ -12,7 +12,43 @@ export default function Page() {
         <h2 className="bg-gray-200 p-4 rounded-md text-2xl text-center">
           Gallery
         </h2>
-        <div className="flex flex-wrap gap-4 justify-between">
+        <div className="flex flex-wrap gap-4 justify-between items-center">
+          <Image
+            src="/images/gallery/2.jpeg"
+            alt="gallery"
+            width={500}
+            height={100}
+          />
+          <Image
+            src="/images/gallery/14.jpeg"
+            alt="gallery"
+            width={300}
+            height={100}
+          />
+          <Image
+            src="/images/gallery/3.jpeg"
+            alt="gallery"
+            width={500}
+            height={100}
+          />
+          <Image
+            src="/images/gallery/1.jpeg"
+            alt="gallery"
+            width={500}
+            height={100}
+          />
+          <Image
+            src="/images/gallery/4.jpeg"
+            alt="gallery"
+            width={300}
+            height={100}
+          />
+          <Image
+            src="/images/gallery/5.jpeg"
+            alt="gallery"
+            width={300}
+            height={100}
+          />
           <Image
             src="/images/gallery/6.jpeg"
             alt="gallery"
@@ -61,12 +97,7 @@ export default function Page() {
             width={300}
             height={100}
           />
-          <Image
-            src="/images/gallery/14.jpeg"
-            alt="gallery"
-            width={300}
-            height={100}
-          />
+
           <Image
             src="/images/gallery/15.jpeg"
             alt="gallery"
