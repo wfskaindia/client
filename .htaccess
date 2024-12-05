@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^wfskaindia.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.wfskaindia.com$
+RewriteCond %{REQUEST_URI} !build/
+RewriteRule (.*) /build/$1 [L]
