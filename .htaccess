@@ -1,5 +1,17 @@
+# Enable Rewrite Engine
 RewriteEngine on
+
+# Redirect root domain to the 'build' directory
 RewriteCond %{HTTP_HOST} ^wfskaindia.com$ [NC,OR]
 RewriteCond %{HTTP_HOST} ^www.wfskaindia.com$
-RewriteCond %{REQUEST_URI} !build/
-RewriteRule (.*) /build/$1 [L]
+RewriteCond %{REQUEST_URI} !^/build/
+RewriteRule ^(.*)$ /build/$1 [L]
+
+# Serve existing files directly (e.g., /about-us -> build/about-us.html)
+RewriteCond %{DOCUMENT_ROOT}/build%{REQUEST_URI}.html -f
+RewriteRule ^(.*)$ /build/$1.html [L]
+
+# Serve index.html for non-existing files or directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^build/.*$ /build/index.html [L]
