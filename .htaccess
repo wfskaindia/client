@@ -7,7 +7,7 @@ RewriteCond %{HTTP_HOST} ^www.wfskaindia.com$
 RewriteCond %{REQUEST_URI} !^/build/
 RewriteRule ^(.*)$ /build/$1 [L]
 
-# Serve existing files directly (e.g., /about-us -> build/about-us.html)
+# Serve specific HTML files (e.g., /about-us -> /build/about-us.html)
 RewriteCond %{DOCUMENT_ROOT}/build%{REQUEST_URI}.html -f
 RewriteRule ^(.*)$ /build/$1.html [L]
 
