@@ -18,8 +18,8 @@
 
 
 # production
-#/build
-
+/build
+deploy.sh
 # misc
 .DS_Store
 *.pem
