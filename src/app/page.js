@@ -1,7 +1,9 @@
-import Header from "components/header";
-import Footer from "components/footer";
 import Slider from "components/slider";
 import Image from "next/image";
+
+export const metadata = {
+  title: "World Funakoshi Shotokan Karate Association India",
+};
 
 export default function Page() {
   return (
