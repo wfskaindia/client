@@ -62,15 +62,14 @@ const ExaminerAuthorizationForm = () => {
             type="date"
             name="date_of_examination"
           />
-          <InputField label="Mob. No.:" type="tel" name="mobile_no" />
+          <InputField
+            label="Mobile No (Whatsapp)"
+            type="tel"
+            name="mobile_no"
+          />
         </div>
 
-        <p className="text-sm text-gray-700 font-semibold">
-          Monthly Fees including any previous dues must be paid before
-          examination.
-        </p>
-
-        <InputField
+        {/* <InputField
           label="Monthly Fees paid up to (month):"
           type="text"
           name="fees_paid_upto"
@@ -79,9 +78,9 @@ const ExaminerAuthorizationForm = () => {
           label="Examination Fees:"
           type="number"
           name="examination_fees"
-        />
+        /> */}
 
-        <div className="flex justify-between mt-8">
+        {/* <div className="flex justify-between mt-8">
           <div className="flex-1">
             <Label text="Signature of the Student:" />
             <input
@@ -102,7 +101,7 @@ const ExaminerAuthorizationForm = () => {
               placeholder="Sign here"
             />
           </div>
-        </div>
+        </div> */}
 
         <SubmitButton />
       </form>

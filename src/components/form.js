@@ -16,13 +16,15 @@ export const InputContainer = ({ children }) => {
   );
 };
 
-export const InputField = ({ label, type, name }) => (
+export const InputField = ({ label, type, name, value, onChange }) => (
   <InputContainer>
     <Label text={label} />
     <input
       type={type}
       name={name}
-      className="rounded-md border border-gray-200 p-3"
+      value={value}
+      className="rounded-md border border-gray-600 p-3"
+      onChange={onChange}
     />
   </InputContainer>
 );
@@ -33,7 +35,7 @@ export const TextAreaField = ({ label, name, rows = 3 }) => (
     <textarea
       name={name}
       rows={rows}
-      className="rounded-md border border-gray-200 p-2"
+      className="rounded-md border border-gray-600 p-2"
     ></textarea>
   </InputContainer>
 );

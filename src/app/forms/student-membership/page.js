@@ -1,3 +1,4 @@
+"use client";
 import {
   InputField,
   RadioField,
@@ -7,12 +8,48 @@ import {
   ProfilePhotoUpload,
   SubmitButton,
 } from "components/form";
-
-export const metadata = {
-  title: "Student Membership Form - WfskaIndia",
-};
+import { useState } from "react";
 
 export default function Page() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    dateOfBirth: "",
+    address: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formData);
+
+    try {
+      const response = await fetch("/api/student-membership", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Form submitted successfully:", result);
+      } else {
+        console.log("Error submitting form");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
   return (
     <>
       <section className="bg-white px-80 py-10 space-y-5">
@@ -21,16 +58,10 @@ export default function Page() {
         </h2>
         <form className="space-y-5">
           <ProfilePhotoUpload />
-          <InputField label="Reg No" type="text" name="reg_no" />
           <InputField label="Name" type="text" name="name" />
-          <InputField label="Date" type="date" name="date" />
           <InputField label="Father's Name" type="text" name="father_name" />
           <TextAreaField label="Address" name="address" />
-          <InputField
-            label="Telephone No/ Mobile No."
-            type="text"
-            name="phone"
-          />
+          <InputField label="Mobile No (Whatsapp)" type="text" name="phone" />
           <InputField
             label="Name of the School"
             type="text"
@@ -44,8 +75,11 @@ export default function Page() {
               <RadioField label="Female" name="sex" value="Female" />
             </div>
           </div>
-          <InputField label="Date of Birth" type="date" name="dob" />
-          <InputField label="Age" type="number" name="age" />
+          {/* make dob field same width as others */}
+          <div className="flex flex-wrap gap-4">
+            <InputField label="Date of Birth" type="date" name="dob" />
+            <InputField label="Age" type="number" name="age" />
+          </div>
           <div className="flex flex-wrap gap-4">
             <InputField label="Height" type="text" name="height" />
             <InputField label="Weight" type="text" name="weight" />
@@ -131,28 +165,6 @@ export default function Page() {
               the training session(s).
             </p>
           </div>
-          <div className="flex flex-wrap gap-4">
-            <InputField
-              label="Student Signature"
-              type="text"
-              name="student_signature"
-            />
-            <InputField
-              label="Parent's Signature"
-              type="text"
-              name="parent_signature"
-            />
-            <InputField
-              label="Instructor Signature"
-              type="text"
-              name="instructor_signature"
-            />
-          </div>
-          <InputField
-            label="Date of Joining"
-            type="date"
-            name="date_of_joining"
-          />
           {/* Submit */}
           <SubmitButton />
         </form>
@@ -160,3 +172,30 @@ export default function Page() {
     </>
   );
 }
+
+/*
+
+Reg no - string
+Name - string
+Date - date
+Father name - string
+Mobile no - int
+name of school - string
+standard - string
+sex - string male or female
+date of birth - date
+age - int
+height - int
+weight - int
+address - string
+district - string
+state - string
+taluka - string
+pin code - int
+is_participate_inopentournament - boolean
+previous_experience - string
+health_details -enums
+health_details_additional - string
+date_of_joing - date
+
+*/

@@ -16,14 +16,13 @@ export default function Page() {
           <InstructorCard
             src="/gopal.jpeg"
             name="Shihan Devidas Gopal Naik"
-            designation="President WFSKA-INDIA/FOUNDER"
+            designation="President / FOUNDER"
           />
-
           <InstructorCard
-            src="/monushka.jpeg"
-            name="Sensei Monushka Agima Pereira"
-            address="Casa Do povo hall, Goa velha Market"
-            designation="Chief Instructor"
+            src="/manjunath.jpeg"
+            name="Shihan Manjunath Tangadagi"
+            designation="Gen. Sect/Tech. Director"
+            address="WFSKA India"
           />
           <InstructorCard
             src="/anthony.jpeg"
@@ -31,23 +30,81 @@ export default function Page() {
             address="Dojo- Casa -do-povo hall, Goa Velha"
             designation="Instructor"
           />
+
           <InstructorCard
-            src="/ashraf.jpeg"
-            name="Sensei Mohammed Ashraf Minshinkai"
-            address="Dojo location -Curca  and Santacruz"
-            designation="Instructor "
-          />
-          <InstructorCard
-            src="/ravi.jpeg"
-            name="Ravi . M. GOULI"
-            address="Dojo- Casa -do-povo hall, Goa Velha"
+            src="/suraj.jpeg"
+            name="Sensei Suraj Mali"
+            address="Rose Garden School Chogam Porvorim"
             designation="Instructor"
           />
           <InstructorCard
             src="/vignesh.jpg"
             name="Vignesh Mukund Haldankar"
-            address="Bldg. No. 244,Room No. 1/3,MPT COLONY, Headland Sada, Vasco, Goa"
-            designation="2nd DAN WFSKA JAPAN"
+            address="Rose Circle Ground, Headland Sada, Vasco, Goa"
+            designation="Instructor"
+          />
+          <InstructorCard
+            src="/monushka.jpeg"
+            name="Sensei Monushka Agima Pereira"
+            address="Casa Do povo hall, Goa velha Market"
+            designation="Instructor"
+          />
+          <InstructorCard
+            src="/ashraf.jpeg"
+            name="Sensei Ashraf Minshinkai"
+            address="Dojo Curca  and Santacruz"
+            designation="Instructor "
+          />
+          <InstructorCard
+            src="/siya.jpeg"
+            name="Sensei Siya Pradeep Bhosle"
+            address="Dojo Mahalaximi Residency Upasnagar Sancoale"
+            designation="Instructor"
+          />
+          {/* <InstructorCard
+            src="/ravi.jpeg"
+            name="Ravi . M. GOULI"
+            address="Dojo Casa -do-povo hall, Goa Velha"
+            designation="Instructor"
+          /> */}
+          <div className="w-[300px] space-y-1 text-center">
+            <div className="w-[300px]">
+              <Image
+                src="/images/file.jpg"
+                width={400}
+                height={600}
+                alt="Ashraf"
+                className="rounded-md w-full h-full"
+              />
+            </div>
+            <h2 className="text-lg font-black">Ravi . M. GOULI</h2>
+            <p className="font-semibold">Instructor</p>
+            <p className="break-words">Dojo Casa -do-povo hall, Goa Velha</p>
+          </div>
+          <InstructorCard
+            src="/nidhi.jpeg"
+            name="Sensei Nidhi Abhijit Mesta"
+            designation="Instructor"
+          />
+          <InstructorCard
+            src="/tanushka.jpeg"
+            name="Sensei Tanishka Palyekar"
+            designation="Instructor"
+          />
+          <InstructorCard
+            src="/palak.jpeg"
+            name="Sensei Palak Chodankar"
+            designation="Instructor"
+          />
+          <InstructorCard
+            src="/vandana.jpeg"
+            name="Sensei Vandana Das"
+            designation="Instructor"
+          />
+          <InstructorCard
+            src="/vinit.jpeg"
+            name="Sensei Vinit Ghaware"
+            designation="Instructor"
           />
         </div>
       </section>
@@ -55,7 +112,7 @@ export default function Page() {
   );
 }
 
-const InstructorCard = ({ src, name, address, designation }) => {
+const InstructorCard = ({ src, name, address, designation, additional }) => {
   return (
     <>
       <div className="w-[300px] space-y-1 text-center">
@@ -63,7 +120,7 @@ const InstructorCard = ({ src, name, address, designation }) => {
           <Image
             src={`/images/instructors${src}`}
             width={300}
-            height={300}
+            height={350}
             alt="Ashraf"
             className="rounded-md w-full h-full"
           />

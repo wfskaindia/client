@@ -106,17 +106,6 @@ const ExaminerAuthorizationForm = () => {
           <InputField label="Date" type="date" name="date" />
         </div>
 
-        {/* Signature of Applicant and Sensei */}
-        <div className="flex justify-between mt-6">
-          <div className="text-center">
-            <p>Signature of Applicant</p>
-            <p>Affiliated Instructor</p>
-          </div>
-          <div className="text-center">
-            <p>Sensei Devidas Gopal Naik</p>
-            <p>Chief Instructor/President WFSKA-INDIA</p>
-          </div>
-        </div>
         <SubmitButton />
       </form>
     </section>

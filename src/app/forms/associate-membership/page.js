@@ -125,48 +125,23 @@ const ExaminerAuthorizationForm = () => {
         </div>
 
         {/* Signatures */}
-        <div className="grid grid-cols-2 gap-4 mt-6">
-          <div className="flex-1">
-            <Label text="Signature of Representative:" />
-            <input
-              type="text"
-              name="signature_representative"
-              readOnly
-              className="w-full border-b border-gray-300 mt-2 p-1"
-              placeholder="Sign here"
-            />
-          </div>
-          <div className="flex-1">
-            <Label text="Date:" />
-            <input
-              type="date"
-              name="date"
-              className="w-full border-b border-gray-300 mt-2 p-1"
-            />
-          </div>
+        <div className="flex gap-4 justify-end items-end">
+          <label className="text-xl">Date</label>
+          <input
+            type="date"
+            name="date"
+            className="w-full border-b border-gray-300 p-2"
+          />
         </div>
-
-        <div className="grid grid-cols-2 gap-4">
-          <div className="flex-1">
-            <Label text="Recommended by:" />
-            <input
-              type="text"
-              name="recommended_by"
-              readOnly
-              className="w-full border-b border-gray-300 mt-2 p-1"
-              placeholder="Sign here"
-            />
-          </div>
-          <div className="flex-1">
-            <Label text="Signature:" />
-            <input
-              type="text"
-              name="signature"
-              readOnly
-              className="w-full border-b border-gray-300 mt-2 p-1"
-              placeholder="Sign here"
-            />
-          </div>
+        <div className="">
+          <Label text="Recommended by:" />
+          <input
+            type="text"
+            name="recommended_by"
+            readOnly
+            className="w-full border-b border-gray-300 p-1"
+            placeholder=""
+          />
         </div>
 
         <SubmitButton />

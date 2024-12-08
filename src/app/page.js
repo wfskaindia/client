@@ -1,6 +1,6 @@
 import Slider from "components/slider";
 import Image from "next/image";
-
+import { Monti } from "next/font/google";
 export const metadata = {
   title: "World Funakoshi Shotokan Karate Association India",
 };
@@ -9,7 +9,7 @@ export default function Page() {
   return (
     <>
       <section className="bg-gradient-to-r from-sky-400 to-cyan-600 px-40 py-10 space-y-5 text-center">
-        <h1 className="text-white font- font-black text-3xl capitalize">
+        <h1 className="text-white font-black text-3xl capitalize">
           Objective to promote and develop Shotokan karate in india
         </h1>
         <p className="text-white font-thin">

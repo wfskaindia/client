@@ -12,23 +12,67 @@ export default function Page() {
         <h2 className="bg-gray-200 p-4 rounded-md text-2xl text-center">
           Adminstration
         </h2>
-        <div className="space-y-4">
-          <div className="flex flex-col gap-2 justify-center items-center">
-            <Image
+        <div className="space-y-8">
+          <div className="flex flex-col gap-1 justify-center items-center">
+            {/* <Image
               src="/images/adminstration/photo.jpeg"
               width={200}
               height={300}
               alt="Ex"
               className="rounded-md"
-            />
-            <h2 className="text-xl">Shihan Devidas Gopal Naik</h2>
-            <p>President WFSKA-INDIA/FOUNDER</p>
+            /> */}
           </div>
-          <div className="flex flex-wrap gap-8 justify-center items-center">
+          <div className="flex flex-col gap-8 justify-center items-center">
             <div>
               <Image
-                src="/images/adminstration/cert1.jpeg"
+                src="/images/adminstration/photo.jpeg"
                 width={200}
+                height={300}
+                alt="Ex"
+                className="rounded-md"
+              />
+            </div>
+            <div className="text-center">
+              <h2 className="text-xl uppercase text-blue-700">
+                Shihan Devidas Gopal Naik
+              </h2>
+              <p className="uppercase">Founder / President</p>
+              <p className="uppercase">WFSKA-India</p>
+            </div>
+            <div className="text-center">
+              <h2 className="text-xl uppercase text-blue-700">
+                Funakoshi Shotokan Karate Association World
+              </h2>
+              <p className="uppercase">Roku Dan 6th Dan</p>
+            </div>
+            <div className="text-center">
+              <h2 className="text-xl uppercase text-blue-700">
+                World Karate Federation (WKF)
+              </h2>
+              <p className="uppercase">Roku Dan 6th Dan</p>
+            </div>
+            <div className="text-center">
+              <h2 className="text-xl uppercase text-blue-700">
+                International Affiliation
+              </h2>
+              <p className="uppercase">
+                Funakoshi Shotokan Karate Association World (FSKA World)
+              </p>
+            </div>
+            <div className="text-center">
+              <h2 className="text-xl uppercase text-blue-700">Approved By</h2>
+              <p className="uppercase">Karate India Organization (KIO)</p>
+            </div>
+            <div className="text-center">
+              <h2 className="text-xl uppercase text-blue-700">Member Of</h2>
+              <p className="uppercase">
+                Traditional Karate Association Of Goa (TKAG)
+              </p>
+            </div>
+            <div>
+              <Image
+                src="/images/adminstration/cert1.png"
+                width={500}
                 height={300}
                 alt="Ex"
                 className=" border rounded-md"
@@ -36,7 +80,7 @@ export default function Page() {
             </div>
             <div>
               <Image
-                src="/images/adminstration/cert2.jpeg"
+                src="/images/adminstration/cert2.png"
                 width={400}
                 height={300}
                 alt="Ex"
@@ -45,7 +89,7 @@ export default function Page() {
             </div>{" "}
             <div>
               <Image
-                src="/images/adminstration/cert3.jpeg"
+                src="/images/adminstration/cert3.png"
                 width={400}
                 height={300}
                 alt="Ex"
@@ -54,7 +98,7 @@ export default function Page() {
             </div>{" "}
             <div>
               <Image
-                src="/images/adminstration/cert4.jpeg"
+                src="/images/adminstration/cert4.png"
                 width={400}
                 height={300}
                 alt="Ex"
