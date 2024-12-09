@@ -14,7 +14,7 @@ export const metadata = {
 
 const ExaminerAuthorizationForm = () => {
   return (
-    <section className="bg-white px-80 py-10 space-y-5">
+    <>
       <h2 className="bg-gray-200 p-4 rounded-md text-2xl text-center">
         Examiner Authorization
       </h2>
@@ -108,7 +108,7 @@ const ExaminerAuthorizationForm = () => {
 
         <SubmitButton />
       </form>
-    </section>
+    </>
   );
 };
 

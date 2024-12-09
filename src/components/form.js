@@ -11,31 +11,40 @@ export const Label = ({ text, forf }) => {
 export const InputContainer = ({ children }) => {
   return (
     <>
-      <div className="flex flex-col space-y-2">{children}</div>
+      <div className="flex flex-col space-y-2 w-full">{children}</div>
     </>
   );
 };
 
-export const InputField = ({ label, type, name, value, onChange }) => (
+export const InputField = ({
+  label,
+  type,
+  name,
+  value,
+  required,
+  onChange,
+}) => (
   <InputContainer>
     <Label text={label} />
     <input
       type={type}
       name={name}
       value={value}
-      className="rounded-md border border-gray-600 p-3"
+      className="rounded-md border border-gray-600 p-3 "
       onChange={onChange}
+      required={required}
     />
   </InputContainer>
 );
 
-export const TextAreaField = ({ label, name, rows = 3 }) => (
+export const TextAreaField = ({ label, name, rows = 3, required }) => (
   <InputContainer>
     <Label text={label} />
     <textarea
       name={name}
       rows={rows}
       className="rounded-md border border-gray-600 p-2"
+      required={required}
     ></textarea>
   </InputContainer>
 );
@@ -73,8 +82,15 @@ export const SubmitButton = () => {
 // RadioButton component
 export const RadioField = ({ label, name, value }) => (
   <div className="flex items-center mr-4">
-    <input type="radio" name={name} value={value} className="mr-2" />
-    <Label text={label} />
+    <input
+      type="radio"
+      name={name}
+      value={value}
+      className="mr-2"
+      id={value}
+      required
+    />
+    <Label text={label} forf={value} />
   </div>
 );
 

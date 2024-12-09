@@ -12,7 +12,7 @@ export default function Page() {
         <h2 className="bg-gray-200 p-4 rounded-md text-2xl text-center">
           Contact Us
         </h2>
-        <div className="flex flex-col justify-center  items-center gap-4">
+        <div className="text-center flex flex-col justify-center  items-center gap-4">
           <Image src="/images/logo.png" width={400} height={400} alt="Logo" />
 
           <p className="text-2xl">

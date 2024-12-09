@@ -19,7 +19,7 @@ export default function Page() {
             width={200}
             height={200}
           />
-          <p className="text-3xl">
+          <p className="text-2xl">
             WFSKA-INDIA is a Shotokan style founded by Master Gichin Funakoshi,
             the most widely known style of Karate all over the world and he is
             known as a father of modern karate. Present Grandmaster Kevin
@@ -27,11 +27,11 @@ export default function Page() {
             Funakoshi Shotokan Karate Association (FSKA).
           </p>
         </div>
-        <p className="text-3xl">
+        <p className="text-2xl">
           It is affiliated to Funakoshi Shotokan Karate Association World
           (Japan) and approved by Karate India Organisation (KIO).
         </p>
-        <p className="text-3xl">
+        <p className="text-2xl">
           The association has great experience of participating in different
           Nation and International Championships, Seminars and Grandmaster
           training camps. He has made significant contributions in the field of
@@ -43,9 +43,9 @@ export default function Page() {
             width={200}
             height={200}
             alt="Ashraf"
-            className="rounded-md w-full h-full"
+            className="rounded-md"
           />
-          <p className="text-3xl">
+          <p className="text-2xl">
             WFSKA-INDIA is formed under the guidance of Sensei Devidas Gopal
             Naik He started his karate training in Budokan Marshal Art and
             Fitness Institution (BMAFI) on 03 June 1992 under Shihan Mahesh

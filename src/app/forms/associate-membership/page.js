@@ -13,7 +13,7 @@ export const metadata = {
 
 const ExaminerAuthorizationForm = () => {
   return (
-    <section className="bg-white px-80 py-10 space-y-5">
+    <>
       <h2 className="bg-gray-200 p-4 rounded-md text-2xl text-center">
         Associate Membership State / District / Club Form
       </h2>
@@ -41,7 +41,7 @@ const ExaminerAuthorizationForm = () => {
           type="text"
           name="style_grade"
         />
-        <InputField label="DOB" type="date" name="dob" />
+        <InputField label="Date Of Birth" type="date" name="dob" />
 
         <div className="grid grid-cols-2 gap-4">
           <InputField
@@ -124,29 +124,12 @@ const ExaminerAuthorizationForm = () => {
           </p>
         </div>
 
-        {/* Signatures */}
-        <div className="flex gap-4 justify-end items-end">
-          <label className="text-xl">Date</label>
-          <input
-            type="date"
-            name="date"
-            className="w-full border-b border-gray-300 p-2"
-          />
-        </div>
-        <div className="">
-          <Label text="Recommended by:" />
-          <input
-            type="text"
-            name="recommended_by"
-            readOnly
-            className="w-full border-b border-gray-300 p-1"
-            placeholder=""
-          />
-        </div>
+        <InputField label="Date" type="date" name="date" required={true} />
+        <InputField label="Recommended By" type="text" name="recommended_by" />
 
         <SubmitButton />
       </form>
-    </section>
+    </>
   );
 };
 
