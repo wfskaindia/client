@@ -5,33 +5,39 @@ import {
   TextAreaField,
   CheckboxField,
   Label,
-  ProfilePhotoUpload,
+  PhotoUpload,
   SubmitButton,
+  InputContainer,
 } from "components/form";
+import { Message } from "components/message";
 import { useState } from "react";
 
 export default function Page() {
   const [formData, setFormData] = useState({
+    email: "",
     name: "",
     father_name: "",
     address: "",
-    phone: "",
+    mobile_no: "",
     school_name: "",
     std: "",
     sex: "",
     date_of_birth: "",
-    age: "",
     height: "",
     weight: "",
     district: "",
     state: "",
     taluka: "",
     pin_code: "",
-    wish_to_participate_in_tournament: "", // Will be a boolean, stored as 'Yes' or 'No'
+    wish_to_participate_in_tournament: "",
     experience: "",
-    health_conditions: [], // Array to store selected health conditions
+    health_conditions: [],
     more_health_details: "",
   });
+  const [photo, setPhoto] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(null);
+
+  const [message, setMessage] = useState({ type: "", text: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +46,10 @@ export default function Page() {
         const newHealthConditions = e.target.checked
           ? [...prevData.health_conditions, value]
           : prevData.health_conditions.filter((val) => val !== value);
-        return { ...prevData, health_conditions: newHealthConditions };
+        return {
+          ...prevData,
+          health_conditions: newHealthConditions,
+        };
       });
     } else {
       setFormData((prevData) => ({
@@ -52,7 +61,7 @@ export default function Page() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    setIsSubmitting(true);
 
     try {
       const response = await fetch(
@@ -62,18 +71,22 @@ export default function Page() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({ ...formData, photo }),
         }
       );
-
-      if (response.ok) {
-        const result = await response.json();
+      const result = await response.json();
+      if (result.success) {
+        setMessage({ type: "success", text: "Form Submitted Successfully" });
         console.log("Form submitted successfully:", result);
       } else {
-        console.log("Error submitting form");
+        setMessage({ type: "ERROR", text: result.message });
+        console.log("Error Submitting Form");
       }
+      setIsSubmitting(false);
     } catch (error) {
+      setIsSubmitting(false);
       console.error("Error submitting form:", error);
+      setMessage({ type: "ERROR", text: error.message });
     }
   };
 
@@ -83,7 +96,18 @@ export default function Page() {
         Student Membership Form
       </h2>
       <form className="space-y-5" onSubmit={handleSubmit}>
-        <ProfilePhotoUpload />
+        {message.text ? (
+          <Message type={message.type} text={message.text} />
+        ) : null}
+        <PhotoUpload onPhotoUpload={setPhoto} />
+        <InputField
+          label="Email"
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required={true}
+        />
         <InputField
           label="Name"
           type="text"
@@ -100,12 +124,11 @@ export default function Page() {
           onChange={handleChange}
           required={true}
         />
-
         <InputField
           label="Mobile No (Whatsapp)"
-          type="text"
-          name="phone"
-          value={formData.phone}
+          type="number"
+          name="mobile_no"
+          value={formData.mobile_no}
           onChange={handleChange}
           required={true}
         />
@@ -118,12 +141,12 @@ export default function Page() {
           required={true}
         />
         <InputField
-          required={true}
           label="Standard (Std)"
           type="text"
           name="std"
           onChange={handleChange}
           value={formData.std}
+          required={true}
         />
         <div className="flex gap-4">
           <Label text="Sex:" />
@@ -155,16 +178,16 @@ export default function Page() {
         <div className="flex gap-4">
           <InputField
             required={true}
-            label="Height"
-            type="text"
+            label="Height (cm)"
+            type="number"
             name="height"
             value={formData.height}
             onChange={handleChange}
           />
           <InputField
             required={true}
-            label="Weight"
-            type="text"
+            label="Weight (kg)"
+            type="number"
             name="weight"
             value={formData.weight}
             onChange={handleChange}
@@ -186,14 +209,59 @@ export default function Page() {
             value={formData.district}
             onChange={handleChange}
           />
-          <InputField
-            required={true}
-            label="State"
-            type="text"
-            name="state"
-            value={formData.state}
-            onChange={handleChange}
-          />
+
+          <InputContainer>
+            <Label text="State" />
+            <select
+              name="state"
+              className="rounded-md border border-gray-600 px-3 bg-white h-full w-full"
+              onChange={handleChange}
+              value={formData.state}
+              required
+            >
+              <option value="">Select State</option>
+              <option value="andhra pradesh">Andhra Pradesh</option>
+              <option value="arunachal pradesh">Arunachal Pradesh</option>
+              <option value="assam">Assam</option>
+              <option value="bihar">Bihar</option>
+              <option value="chhattisgarh">Chhattisgarh</option>
+              <option value="goa">Goa</option>
+              <option value="gujarat">Gujarat</option>
+              <option value="haryana">Haryana</option>
+              <option value="himachal pradesh">Himachal Pradesh</option>
+              <option value="jharkhand">Jharkhand</option>
+              <option value="karnataka">Karnataka</option>
+              <option value="kerala">Kerala</option>
+              <option value="madhya pradesh">Madhya Pradesh</option>
+              <option value="maharashtra">Maharashtra</option>
+              <option value="manipur">Manipur</option>
+              <option value="meghalaya">Meghalaya</option>
+              <option value="mizoram">Mizoram</option>
+              <option value="nagaland">Nagaland</option>
+              <option value="odisha">Odisha</option>
+              <option value="punjab">Punjab</option>
+              <option value="rajasthan">Rajasthan</option>
+              <option value="sikkim">Sikkim</option>
+              <option value="tamil nadu">Tamil Nadu</option>
+              <option value="telangana">Telangana</option>
+              <option value="tripura">Tripura</option>
+              <option value="uttar pradesh">Uttar Pradesh</option>
+              <option value="uttarakhand">Uttarakhand</option>
+              <option value="west bengal">West Bengal</option>
+              <option value="andaman and nicobar islands">
+                Andaman and Nicobar Islands
+              </option>
+              <option value="chandigarh">Chandigarh</option>
+              <option value="dadra and nagar haveli and daman and diu">
+                Dadra and Nagar Haveli and Daman and Diu
+              </option>
+              <option value="lakshadweep">Lakshadweep</option>
+              <option value="delhi">Delhi</option>
+              <option value="puducherry">Puducherry</option>
+              <option value="ladakh">Ladakh</option>
+              <option value="lakshadweep">Lakshadweep</option>
+            </select>
+          </InputContainer>
         </div>
         <div className="flex gap-4">
           <InputField
@@ -236,7 +304,6 @@ export default function Page() {
           value={formData.experience}
           onChange={handleChange}
         />
-
         <div>
           <h3 className="font-semibold text-lg">Health Details (if any)</h3>
           <div className="flex flex-wrap gap-4">
@@ -341,7 +408,6 @@ export default function Page() {
             onChange={handleChange}
           />
         </div>
-
         <div className="space-y-2">
           <p>
             <strong>Agreement:</strong> I acknowledge that I am undertaking this
@@ -351,7 +417,14 @@ export default function Page() {
             during or after undertaking this course or the training session(s).
           </p>
         </div>
-        <SubmitButton />
+        {isSubmitting ? (
+          <SubmitButton text="Submitting" />
+        ) : (
+          <SubmitButton text="Submit" />
+        )}
+        {message.text ? (
+          <Message type={message.type} text={message.text} />
+        ) : null}
       </form>
     </>
   );

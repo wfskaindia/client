@@ -37,20 +37,29 @@ export const InputField = ({
   </InputContainer>
 );
 
-export const TextAreaField = ({ label, name, rows = 3, required }) => (
+export const TextAreaField = ({
+  label,
+  name,
+  value,
+  rows = 3,
+  required,
+  onChange,
+}) => (
   <InputContainer>
     <Label text={label} />
     <textarea
       name={name}
+      value={value}
       rows={rows}
       className="rounded-md border border-gray-600 p-2"
       required={required}
+      onChange={onChange}
     ></textarea>
   </InputContainer>
 );
 
 // Checkbox component
-export const CheckboxField = ({ label, name, value }) => (
+export const CheckboxField = ({ label, name, value, checked, onChange }) => (
   <div className="flex items-center mb-2">
     <input
       type="checkbox"
@@ -58,12 +67,14 @@ export const CheckboxField = ({ label, name, value }) => (
       value={value}
       className="mr-2 scale-125"
       id={value}
+      checked={checked}
+      onChange={onChange}
     />
     <Label forf={label} text={value} />
   </div>
 );
 
-export const SubmitButton = () => {
+export const SubmitButton = ({ text }) => {
   return (
     <>
       {" "}
@@ -72,7 +83,7 @@ export const SubmitButton = () => {
           type="submit"
           className="bg-blue-500 text-white px-6 py-2 rounded-md"
         >
-          Submit
+          {text}
         </button>
       </div>
     </>
@@ -80,7 +91,7 @@ export const SubmitButton = () => {
 };
 
 // RadioButton component
-export const RadioField = ({ label, name, value }) => (
+export const RadioField = ({ label, name, value, checked, onChange }) => (
   <div className="flex items-center mr-4">
     <input
       type="radio"
@@ -88,19 +99,29 @@ export const RadioField = ({ label, name, value }) => (
       value={value}
       className="mr-2"
       id={value}
+      checked={checked}
+      onChange={onChange}
       required
     />
     <Label text={label} forf={value} />
   </div>
 );
 
-export const ProfilePhotoUpload = () => {
+export const PhotoUpload = ({ onPhotoUpload }) => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
-      setSelectedImage(URL.createObjectURL(file));
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(reader.result); // Base64 string
+        setPreviewImage(URL.createObjectURL(file)); // Local preview
+        if (onPhotoUpload) onPhotoUpload(reader.result); // Pass Base64 to parent
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -118,7 +139,7 @@ export const ProfilePhotoUpload = () => {
         <div className="mt-2">
           <p className="text-sm text-gray-500 mb-2">Preview:</p>
           <img
-            src={selectedImage}
+            src={previewImage}
             alt="Profile Preview"
             className="w-32 h-32 object-cover rounded-md border-2 border-gray-300"
           />

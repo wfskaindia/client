@@ -1,71 +1,142 @@
-import React from "react";
+"use client";
+
+import { useState } from "react";
 import {
   InputField,
   TextAreaField,
-  CheckboxField,
-  RadioField,
-  ProfilePhotoUpload,
+  PhotoUpload,
   SubmitButton,
-} from "components/form"; // Assume these are the form components you already have
+} from "components/form";
+import { Message } from "components/message";
 
-export const metadata = {
-  title: "Examininer Authorization Form - WfskaIndia",
-};
+export default function Page() {
+  const [formData, setFormData] = useState({
+    representativeName: "",
+    styleName: "",
+    presentStyleGrade: "",
+    date_of_birth: "",
+    yearsInMartialArts: "",
+    numberOfStudents: "",
+    history: "",
+    place: "",
+    date: "",
+  });
 
-const ExaminerAuthorizationForm = () => {
+  const [photo, setPhoto] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(null);
+
+  const [message, setMessage] = useState({ type: "", text: "" });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/examiner-authorization",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...formData, photo }),
+        }
+      );
+      const result = await response.json();
+      if (result.success) {
+        setMessage({ type: "success", text: "Form Submitted Successfully" });
+        console.log("Form submitted successfully:", result);
+      } else {
+        setMessage({ type: "ERROR", text: result.message });
+        console.log("Error Submitting Form");
+      }
+      setIsSubmitting(false);
+    } catch (error) {
+      setIsSubmitting(false);
+      console.error("Error submitting form:", error);
+      setMessage({ type: "ERROR", text: error.message });
+    }
+  };
   return (
     <>
       <h2 className="bg-gray-200 p-4 rounded-md text-2xl text-center">
         Examiner Authorization
       </h2>
-      <form className="space-y-5">
-        {/* Name of the Representative */}
-        <ProfilePhotoUpload />
+      <form className="space-y-5" onSubmit={handleSubmit}>
+        {message.text ? (
+          <Message type={message.type} text={message.text} />
+        ) : null}
+        <PhotoUpload onPhotoUpload={setPhoto} />
 
         <InputField
           label="Name of the Representative"
           type="text"
           name="representativeName"
+          value={formData.representativeName}
+          onChange={handleChange}
+          required={true}
         />
 
-        {/* Name of the Style */}
-        <InputField label="Name of the Style" type="text" name="styleName" />
-
-        {/* Present Style Grade */}
+        <InputField
+          label="Name of the Style"
+          type="text"
+          name="styleName"
+          value={formData.styleName}
+          onChange={handleChange}
+          required={true}
+        />
         <InputField
           label="Present Style Grade Dan"
           type="text"
           name="presentStyleGrade"
+          value={formData.presentStyleGrade}
+          onChange={handleChange}
+          required={true}
+        />
+        <InputField
+          label="Date Of Birth"
+          type="date"
+          name="date_of_birth"
+          value={formData.date_of_birth}
+          onChange={handleChange}
+          required={true}
         />
 
-        {/* DOB */}
-        <InputField label="DOB" type="date" name="dob" />
-
-        {/* Age */}
-        <InputField label="Age" type="number" name="age" />
-
-        {/* Number of years in Martial arts */}
         <InputField
           label="Number of years in Martial arts"
           type="number"
           name="yearsInMartialArts"
+          value={formData.yearsInMartialArts}
+          onChange={handleChange}
+          required={true}
         />
 
-        {/* Number of Students */}
         <InputField
           label="Number of Students"
           type="number"
           name="numberOfStudents"
+          value={formData.numberOfStudents}
+          onChange={handleChange}
+          required={true}
         />
 
-        {/* History of Training, Education, Awards etc. */}
         <TextAreaField
           label="History of Training, Education, Awards etc."
           name="history"
           rows={5}
+          value={formData.history}
+          onChange={handleChange}
+          required={true}
         />
 
-        {/* Undertaking section */}
         <h2 className="text-lg font-bold text-center my-4">UNDERTAKING</h2>
 
         <ul className="list-decimal ml-8 space-y-2">
@@ -100,16 +171,33 @@ const ExaminerAuthorizationForm = () => {
           </li>
         </ul>
 
-        {/* Signature, Date, Place */}
         <div className="flex flex-col space-y-4 mt-6">
-          <InputField label="Place" type="text" name="place" />
-          <InputField label="Date" type="date" name="date" />
+          <InputField
+            label="Place"
+            type="text"
+            name="place"
+            value={formData.place}
+            onChange={handleChange}
+            required={true}
+          />
+          <InputField
+            label="Date"
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+            required={true}
+          />
         </div>
-
-        <SubmitButton />
+        {isSubmitting ? (
+          <SubmitButton text="Submitting" />
+        ) : (
+          <SubmitButton text="Submit" />
+        )}
+        {message.text ? (
+          <Message type={message.type} text={message.text} />
+        ) : null}
       </form>
     </>
   );
-};
-
-export default ExaminerAuthorizationForm;
+}
